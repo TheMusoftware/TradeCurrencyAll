@@ -5,7 +5,7 @@ import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public abstract class Currencies {
+public  class Currencies {
     private String code;
     private double totalInWallet;
     private double currentPrice; // Planning feature
@@ -14,13 +14,17 @@ public abstract class Currencies {
         File file = new File(path);
         if(!file.exists()){
             file.createNewFile();
-            FileWriter writer = new FileWriter(file);
+            FileWriter writer = new FileWriter(Main.logPath,true);
             PrintWriter printWriter = new PrintWriter(writer);
             Date date = new Date();
             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss - dd.MMMM.yyyy");
-            printWriter.println("New currency "+ code+" is created on: "+sdf.format(date));
+            printWriter.println("New currency "+ code +" is created on: "+sdf.format(date));
             printWriter.close();
         }
     }
 
+    public Currencies(String code) throws IOException {
+        this.code = code;
+        createFiles();
+    }
 }
