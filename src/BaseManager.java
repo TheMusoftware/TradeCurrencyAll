@@ -31,6 +31,13 @@ public class BaseManager {
        }
     }
     Scanner scanner = new Scanner(System.in);
+    private void printCurrencies(){
+        int i = 1;
+        System.out.println("Select your currency");
+        for (Currencies c : currenciesList){
+            System.out.println(i+++"- "+c.getCode());
+        }
+    }
 public void getMenu() throws IOException {
     System.out.println("Select your operation");
     System.out.println("1-Add new currency");
@@ -50,28 +57,25 @@ public void getMenu() throws IOException {
             getMenu();
             break;
         case 2:
-            int i = 1;
-            System.out.println("Select your currency");
-            for (Currencies c : currenciesList){
-                System.out.println(i+++"- "+c.getCode());
-            }
+            printCurrencies();
             int index = scanner.nextInt();
             System.out.println("-+-"+currenciesList.get(index-1).getCode()+"-+-");
             currenciesList.get(index-1).buy();
             getMenu();
             break;
         case 3:
-            i = 1;
-            System.out.println("Select your currency");
-            for (Currencies c : currenciesList){
-                System.out.println(i+++"- "+c.getCode());
-            }
+            printCurrencies();
              index = scanner.nextInt();
             System.out.println("-+-"+currenciesList.get(index-1).getCode()+"-+-");
             currenciesList.get(index-1).sell();
             getMenu();
             break;
         case 4:
+            printCurrencies();
+            index = scanner.nextInt();
+            double average = currenciesList.get(index-1).average;
+            System.out.println("Safe zone: "+average*0.95 +" - "+average*1.05);
+            System.out.println("The beginning of an affordable price to sell: "+average*1.20);
             break;
         case  5:
             toString();
