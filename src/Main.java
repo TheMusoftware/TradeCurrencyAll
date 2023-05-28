@@ -12,7 +12,7 @@ public class Main {
             PrintWriter printWriter = new PrintWriter(writer);
             Date date = new Date();
             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss - dd.MMMM.yyyy");
-            printWriter.println("This file created on : "+sdf.format(date));
+            printWriter.println("This file created on --> "+sdf.format(date));
             printWriter.close();
         }
 
@@ -20,6 +20,9 @@ public class Main {
     public static void main(String[] args) throws IOException {
         CreateAndCheckLogFiles();
         Currencies c = new Currencies("USD");
+        c.buy();
+        c.sell();
+        System.out.printf(String.valueOf(c.average));
 
     }
 }
