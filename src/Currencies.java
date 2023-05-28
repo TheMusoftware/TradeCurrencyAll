@@ -25,6 +25,8 @@ public  class Currencies {
 
     public Currencies(String code) throws IOException {
         this.code = code;
+        totalInWallet = 0;
+
         createFiles();
     }
 }
