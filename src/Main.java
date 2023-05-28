@@ -22,8 +22,7 @@ public class Main {
         BaseManager baseManager = new BaseManager();
        // Currencies c= new Currencies("USD");
         baseManager.updateCurrencies();
-        System.out.println(baseManager.toString());
-
+        baseManager.getMenu();
 
     }
 }
