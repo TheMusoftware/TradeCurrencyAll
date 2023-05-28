@@ -111,6 +111,14 @@ public  class Currencies {
         return code;
     }
 
+    public double getTotalDeposit() {
+        return totalDeposit;
+    }
+
+    public double getTotalInWallet() {
+        return totalInWallet;
+    }
+
     @Override
     public String toString(){
         String str = "---";

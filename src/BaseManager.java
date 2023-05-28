@@ -49,6 +49,7 @@ public void getMenu() throws IOException {
     int selection = scanner.nextInt();
     switch (selection){
         case 1:
+            scanner.nextLine();
             System.out.println("Enter the code of the new currency");
             String code = scanner.nextLine();
             Currencies currencies = new Currencies(code);
@@ -58,6 +59,7 @@ public void getMenu() throws IOException {
             getMenu();
             break;
         case 2:
+            scanner.nextLine();
             printCurrencies();
             int index = scanner.nextInt();
             System.out.println("-+-"+currenciesList.get(index-1).getCode()+"-+-");
@@ -66,6 +68,7 @@ public void getMenu() throws IOException {
             getMenu();
             break;
         case 3:
+            scanner.nextLine();
             printCurrencies();
              index = scanner.nextInt();
             System.out.println("-+-"+currenciesList.get(index-1).getCode()+"-+-");
@@ -74,6 +77,7 @@ public void getMenu() throws IOException {
             getMenu();
             break;
         case 4:
+            scanner.nextLine();
             printCurrencies();
             index = scanner.nextInt();
             System.out.println("Enter current "+currenciesList.get(index-1).getCode()+" price ");
@@ -82,11 +86,13 @@ public void getMenu() throws IOException {
             System.out.println("Safe zone: "+average*0.95 +" - "+average*1.05);
             System.out.println("The beginning of an affordable price to sell: "+average*1.20);
             System.out.println("Profit ratio: " + ((cPrice/average) *100 - 100 ));
+            System.out.println("Profit: " + (cPrice*currenciesList.get(index-1).getTotalInWallet() - currenciesList.get(index-1).getTotalDeposit()));
             System.out.println();
             getMenu();
             break;
         case  5:
-            toString();
+            scanner.nextLine();
+            System.out.println(toString());
             System.out.println();
             getMenu();
 

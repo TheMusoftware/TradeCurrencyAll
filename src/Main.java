@@ -20,7 +20,6 @@ public class Main {
     public static void main(String[] args) throws IOException {
         CreateAndCheckLogFiles();
         BaseManager baseManager = new BaseManager();
-       // Currencies c= new Currencies("USD");
         baseManager.updateCurrencies();
         baseManager.getMenu();
 
