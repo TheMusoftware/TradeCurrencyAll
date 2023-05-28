@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.FieldPosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
@@ -80,6 +81,16 @@ public  class Currencies {
             average = totalDeposit/totalInWallet;
         }
         else average = 0;
+    }
+
+    @Override
+    public String toString(){
+        String str = "---";
+        str+=code.toUpperCase()+"---";
+        str+="\nWallet: "+totalInWallet;
+        str+="\nAverage: "+average;
+        str+="\nDeposited: "+totalDeposit;
+        return str;
     }
 
 }

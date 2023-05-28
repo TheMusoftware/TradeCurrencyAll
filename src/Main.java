@@ -19,10 +19,8 @@ public class Main {
     }
     public static void main(String[] args) throws IOException {
         CreateAndCheckLogFiles();
+        BaseManager baseManager = new BaseManager();
+        baseManager.updateCurrencies();
         Currencies c = new Currencies("USD");
-        c.buy();
-        c.sell();
-        System.out.printf(String.valueOf(c.average));
-
     }
 }
