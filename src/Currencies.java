@@ -49,9 +49,23 @@ public  class Currencies {
         Date date = new Date();
         printWriter.println(convertLine(amount,price) + "Buying on :"+sdf.format(date));
         printWriter.close();
+        fileWriter.close();
     }
-    public void sell(){
-
+    public void sell() throws IOException {
+        System.out.print("Enter amount: ");
+        double amount = scanner.nextDouble();
+        totalInWallet-=amount;
+        System.out.println();
+        System.out.print("Enter buying price: ");
+        double price = scanner.nextDouble();
+        totalDeposit-=amount*price;
+        File file = new File(path);
+        FileWriter fileWriter = new FileWriter(file,true);
+        PrintWriter printWriter = new PrintWriter(fileWriter);
+        Date date = new Date();
+        printWriter.println(convertLine(amount,price) + "Selling on :"+sdf.format(date));
+        printWriter.close();
+        fileWriter.close();
     }
     private String convertLine(double amount, double price){
         String str = "";
