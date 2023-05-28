@@ -1,7 +1,4 @@
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.text.FieldPosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -36,6 +33,7 @@ public  class Currencies {
         average = 0;
         totalDeposit = 0;
         createFiles();
+        update();
     }
     public  void buy() throws IOException {
         System.out.print("Enter the amount to be bought: ");
@@ -82,6 +80,36 @@ public  class Currencies {
         }
         else average = 0;
     }
+    private void update() throws IOException {
+        File file = new File(path);
+        FileReader reader = new FileReader(file);
+        BufferedReader bufferedReader = new BufferedReader(reader);
+        String line = bufferedReader.readLine();
+        while (line!=null){
+            // index 1 Amount
+            //index 3 price
+            String [] datas;
+            if(line.contains("Buying")){
+               datas  = line.split("<#>");
+                totalInWallet+=Double.parseDouble(datas[1]);
+                totalDeposit+=(Double.parseDouble(datas[1])*Double.parseDouble(datas[3]));
+                calculateAverage();
+            }
+            else if (line.contains("Selling")) {
+                datas = line.split("<#>");
+                totalInWallet-=Double.parseDouble(datas[1]);
+                totalDeposit-=(Double.parseDouble(datas[1])*Double.parseDouble(datas[3]));
+                calculateAverage();
+            }
+            line = bufferedReader.readLine();
+        }
+        bufferedReader.close();
+        reader.close();
+    }
+
+    public String getCode() {
+        return code;
+    }
 
     @Override
     public String toString(){
@@ -90,6 +118,7 @@ public  class Currencies {
         str+="\nWallet: "+totalInWallet;
         str+="\nAverage: "+average;
         str+="\nDeposited: "+totalDeposit;
+        str+="\n---"+code+"---\n";
         return str;
     }
 

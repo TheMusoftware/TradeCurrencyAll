@@ -29,4 +29,15 @@ public class BaseManager {
            reader.close();
        }
     }
+public void getMenu()
+
+    @Override
+    public String toString(){
+        String str ="";
+        for (Currencies c : currenciesList){
+            str+=c.toString();
+            str+="\n";
+        }
+        return str;
+    }
 }
