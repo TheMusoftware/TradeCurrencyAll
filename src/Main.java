@@ -22,7 +22,5 @@ public class Main {
         BaseManager baseManager = new BaseManager();
         baseManager.updateCurrencies();
         baseManager.getMenu();
-
-
     }
 }
