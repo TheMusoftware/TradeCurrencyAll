@@ -80,13 +80,13 @@ public void getMenu() throws IOException {
             scanner.nextLine();
             printCurrencies();
             index = scanner.nextInt();
-            System.out.println("Enter current "+currenciesList.get(index-1).getCode()+" price ");
-            double cPrice = scanner.nextDouble(); // temporary feature
+            parseData.getPrice(currenciesList.get(index-1));
+            System.out.println("Current price : "+currenciesList.get(index-1).getCurrentPrice());
             double average = currenciesList.get(index-1).average;
             System.out.println("Safe zone: "+average*0.95 +" - "+average*1.05);
             System.out.println("The beginning of an affordable price to sell: "+average*1.20);
-            System.out.println("Profit ratio: " + ((cPrice/average) *100 - 100 ));
-            System.out.println("Profit: " + (cPrice*currenciesList.get(index-1).getTotalInWallet() - currenciesList.get(index-1).getTotalDeposit()));
+            System.out.println("Profit ratio: " + ((currenciesList.get(index-1).getCurrentPrice()/average) *100 - 100 ));
+            System.out.println("Profit: " + (currenciesList.get(index-1).getCurrentPrice()*currenciesList.get(index-1).getTotalInWallet() - currenciesList.get(index-1).getTotalDeposit()));
             System.out.println();
             getMenu();
             break;
