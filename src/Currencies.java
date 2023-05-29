@@ -134,6 +134,7 @@ public  class Currencies {
         str+="\nWallet: "+totalInWallet;
         str+="\nAverage: "+average;
         str+="\nDeposited: "+totalDeposit;
+        str+="\nCurrent Price: "+currentPrice;
         str+="\n---"+code+"---\n";
         return str;
     }

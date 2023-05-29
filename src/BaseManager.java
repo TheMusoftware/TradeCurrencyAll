@@ -108,6 +108,11 @@ public void getMenu() throws IOException {
     public String toString(){
         String str ="";
         for (Currencies c : currenciesList){
+            try {
+                parseData.getPrice(c);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
             str+=c.toString();
             str+="\n";
         }
