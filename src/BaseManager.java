@@ -98,8 +98,6 @@ public void getMenu() throws IOException {
             break;
         default:
             break;
-
-
     }
 }
 
